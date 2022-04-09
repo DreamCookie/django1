@@ -1,11 +1,11 @@
 from django.shortcuts import render
+from .models import Task
 
-# Create your views here.
-from django.http import HttpResponse
 
 
 def index(requests):
-    return render(requests, 'main/index.html')
+    tasks = Task.objects.all()
+    return render(requests, 'main/index.html', {'title': 'Главная страница сайта', 'tasks': tasks})
 
 def about(requests):
     return render(requests, 'main/about.html')
